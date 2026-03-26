@@ -33,35 +33,35 @@ nx_bench/
 ## Implementation Steps
 
 ### Step 1: Project Setup
-- [ ] Create directory structure (`bfs/`, `sssp/`, `triangles/`, `results/`, `tests/`, `scripts/`)
-- [ ] Create `pyproject.toml` with uv, pytest-benchmark, networkx, matplotlib dependencies
-- [ ] Create `ruff.toml` with linting rules
-- [ ] Create `pyrightconfig.json` with strict type checking
-- [ ] Create `.gitignore`
-- [ ] Create `.pre-commit-config.yaml` for ruff + pyright hooks
-- [ ] Create `justfile` with all commands
+- [x] Create directory structure (`bfs/`, `sssp/`, `triangles/`, `results/`, `tests/`, `scripts/`)
+- [x] Create `pyproject.toml` with uv, pytest-benchmark, networkx, matplotlib dependencies
+- [x] Create `ruff.toml` with linting rules
+- [x] Create `pyrightconfig.json` with strict type checking
+- [x] Create `.gitignore`
+- [x] Create `.pre-commit-config.yaml` for ruff + pyright hooks
+- [x] Create `justfile` with all commands
 
 ### Step 2: Benchmark Infrastructure
-- [ ] Create `tests/conftest.py` with auto-scan fixtures for each algorithm directory
-- [ ] Create `tests/test_bfs.py` with parametrized BFS benchmarks
-- [ ] Create `tests/test_sssp.py` with parametrized SSSP benchmarks
-- [ ] Create `tests/test_triangles.py` with parametrized triangles benchmarks
+- [x] Create `tests/conftest.py` with auto-scan fixtures for each algorithm directory
+- [x] Create `tests/test_bfs.py` with parametrized BFS benchmarks
+- [x] Create `tests/test_sssp.py` with parametrized SSSP benchmarks
+- [x] Create `tests/test_triangles.py` with parametrized triangles benchmarks
 
 ### Step 3: Plotting
-- [ ] Create `scripts/plot_results.py` to generate scatterplots from benchmark JSON
-- [ ] Output CSV with columns: algorithm, graph, nodes, edges, min, max, mean, std, median
+- [x] Create `scripts/plot_results.py` to generate scatterplots from benchmark JSON
+- [x] Output CSV with columns: algorithm, graph, nodes, edges, min, max, mean, std, median
 
 ### Step 4: Testing
-- [ ] Run `just install` to install dependencies
-- [ ] Run `just lint` to verify ruff + pyright pass
-- [ ] Run `just benchmark` to execute all benchmarks (50 iterations)
-- [ ] Run `just plot` to generate scatterplots
-- [ ] Verify CSV and plots are created in `results/`
+- [x] Run `just install` to install dependencies
+- [x] Run `just lint` to verify ruff + pyright pass
+- [x] Run `just benchmark` to execute all benchmarks (50 iterations)
+- [x] Run `just plot` to generate scatterplots
+- [x] Verify CSV and plots are created in `results/`
 
 ### Step 5: Git Setup
-- [ ] Initialize git repository
-- [ ] Run `just precommit-install` to set up pre-commit hooks
-- [ ] Make initial commit
+- [x] Initialize git repository
+- [x] Run `just precommit-install` to set up pre-commit hooks
+- [x] Make initial commit
 
 ## Commands
 
