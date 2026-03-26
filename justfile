@@ -7,7 +7,7 @@ install:
 lint:
     uv run ruff check .
     uv run ruff format --check .
-    uv run mypy . --ignore-missing-imports
+    uv run mypy .
 
 lint-fix:
     uv run ruff check . --fix

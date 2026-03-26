@@ -16,6 +16,7 @@ dev = [
     "ruff>=0.1.0",
     "mypy>=1.0.0",
     "types-networkx",
+    "scipy-stubs",
     "pre-commit>=3.0.0",
 ]
 
@@ -31,5 +32,6 @@ dev = [
     "ruff>=0.1.0",
     "mypy>=1.0.0",
     "types-networkx",
+    "scipy-stubs",
     "pre-commit>=3.0.0",
 ]
