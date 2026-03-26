@@ -20,7 +20,7 @@ dev = [
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "-ra -q --benchmark-disable-gc --benchmark-min-rounds=50"
+addopts = "-ra -q --benchmark-disable-gc"
 testpaths = ["tests"]
 benchmark_storage = "results"
 benchmark_disable = false

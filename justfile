@@ -16,6 +16,9 @@ lint-fix:
 benchmark:
     uv run pytest --benchmark-json=results/benchmark.json --benchmark-compare=all
 
+benchmark-long:
+    uv run pytest --benchmark-json=results/benchmark.json --benchmark-compare=all --benchmark-min-rounds=50
+
 benchmark-bfs:
     uv run pytest tests/test_bfs.py --benchmark-json=results/bfs.json
 
