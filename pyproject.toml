@@ -22,8 +22,6 @@ dev = [
 minversion = "7.0"
 addopts = "-ra -q --benchmark-disable-gc"
 testpaths = ["tests"]
-benchmark_storage = "results"
-benchmark_disable = false
 
 [dependency-groups]
 dev = [
