@@ -32,7 +32,7 @@ all: lint benchmark plot
 
 precommit-install:
     uv pip install pre-commit
-    pre-commit install
+    uv run pre-commit install
 
 test:
     uv run pytest tests/
