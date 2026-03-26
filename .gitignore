@@ -30,6 +30,7 @@ venv/
 .mypy_cache/
 .ruff_cache/
 results/*.json
+results/**/*.json
 results/*.csv
 results/*.png
 bfs/*

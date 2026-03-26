@@ -20,7 +20,7 @@ dev = [
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "-ra -q --benchmark-disable-gc"
+addopts = "-ra -q --benchmark-disable-gc --benchmark-autosave --benchmark-storage=file://results"
 testpaths = ["tests"]
 
 [dependency-groups]

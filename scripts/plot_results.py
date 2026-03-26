@@ -119,12 +119,20 @@ def main() -> None:
     results_dir = Path("results")
     results_dir.mkdir(exist_ok=True)
 
-    json_files = list(results_dir.glob("benchmark*.json"))
+    json_files = sorted(
+        results_dir.glob("**/*.json"), key=lambda p: p.stat().st_mtime, reverse=True
+    )
 
-    all_data: list[dict] = []
-    for json_file in json_files:
-        bench_json = load_benchmark_json(json_file)
-        all_data.extend(extract_benchmark_data(bench_json))
+    if not json_files:
+        print("No benchmark data found. Run benchmarks first with:")
+        print("  just benchmark")
+        return
+
+    latest_json = json_files[0]
+    print(f"Loading benchmark data from: {latest_json.name}")
+
+    bench_json = load_benchmark_json(latest_json)
+    all_data = extract_benchmark_data(bench_json)
 
     if not all_data:
         print("No benchmark data found. Run benchmarks first with:")
