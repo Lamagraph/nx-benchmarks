@@ -32,10 +32,12 @@ venv/
 results/*.json
 results/*.csv
 results/*.png
-*.mtx
-!bfs/*.mtx
-!sssp/*.mtx
-!triangles/*.mtx
+bfs/*
+!bfs/.gitkeep
+sssp/*
+!sssp/.gitkeep
+triangles/*
+!triangles/.gitkeep
 .DS_Store
 .idea/
 .vscode/
