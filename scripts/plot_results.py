@@ -52,37 +52,51 @@ def plot_scatter(
     y_metric: str = "mean",
     yerr_metric: str = "std",
 ) -> None:
-    algorithms = {d["test"].split("[")[0].strip() for d in data}
-    colors = {"bfs": "blue", "sssp": "green", "triangles": "orange"}
+    algorithms = sorted({get_algorithm_from_testname(d["test"]) for d in data})
+    graphs = sorted({d["graph_name"] for d in data})
 
-    fig, ax = plt.subplots(figsize=(10, 6))
+    algo_colors = {"bfs": "blue", "sssp": "green", "triangles": "orange", "unknown": "gray"}
+    graph_markers = {g: i for i, g in enumerate(graphs)}
+    markers = ["o", "s", "^", "D", "v", "<", ">", "p", "h", "*"]
+
+    fig, ax = plt.subplots(figsize=(12, 8))
 
     for algo in algorithms:
-        algo_data = [d for d in data if algo in d["test"].lower()]
+        algo_data = [d for d in data if get_algorithm_from_testname(d["test"]) == algo]
         if not algo_data:
             continue
 
-        x_values = [d[x_metric] for d in algo_data]
-        y_values = [d[y_metric] * 1000 for d in algo_data]  # Convert to ms
-        yerr = [d.get(yerr_metric, 0) * 1000 for d in algo_data]
+        for graph in graphs:
+            graph_data = [d for d in algo_data if d["graph_name"] == graph]
+            if not graph_data:
+                continue
 
-        color = colors.get(algo, "gray")
-        label = algo.upper() if algo != "dijkstra" else "SSSP"
-        ax.errorbar(
-            x_values,
-            y_values,
-            yerr=yerr,
-            fmt="o",
-            label=label,
-            color=color,
-            capsize=3,
-            alpha=0.7,
-        )
+            x_values = [d[x_metric] for d in graph_data]
+            y_values = [d[y_metric] * 1000 for d in graph_data]
+            yerr = [d.get(yerr_metric, 0) * 1000 for d in graph_data]
+
+            color = algo_colors.get(algo, "gray")
+            marker = markers[graph_markers[graph] % len(markers)]
+            label = f"{algo.upper() if algo != 'dijkstra' else 'SSSP'} - {graph}"
+
+            ax.errorbar(
+                x_values,
+                y_values,
+                yerr=yerr,
+                fmt=marker,
+                label=label,
+                color=color,
+                markeredgecolor=color,
+                markerfacecolor="white",
+                capsize=3,
+                alpha=0.8,
+                markersize=8,
+            )
 
     ax.set_xlabel(x_metric.capitalize())
     ax.set_ylabel("Time (ms)")
     ax.set_title(f"Benchmark Results: {y_metric.capitalize()} Time vs {x_metric.capitalize()}")
-    ax.legend()
+    ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left", fontsize=8)
     ax.grid(True, alpha=0.3)
 
     output_path = output_dir / f"scatter_{x_metric}_{y_metric}.png"
