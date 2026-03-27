@@ -1,13 +1,13 @@
 # NetworkX Benchmark Suite
 
-Benchmark BFS, SSSP (Dijkstra), and Triangle Counting algorithms in NetworkX using graphs in Matrix Market format.
+Benchmark BFS, SSSP (Bellman-Ford), and Triangle Counting algorithms in NetworkX using graphs in Matrix Market format.
 
 ## Algorithms
 
 | Algorithm | NetworkX Function | Description |
 |-----------|-------------------|-------------|
 | BFS | `networkx.bfs_layers(G, source)` | Breadth-first search layers |
-| SSSP | `networkx.single_source_dijkstra(G, source)` | Single-source shortest path (Dijkstra) |
+| SSSP | `networkx.single_source_bellman_ford(G, source)` | Single-source shortest path (Bellman-Ford) |
 | Triangles | `networkx.triangles(G)` | Count triangles in graph |
 
 ## Quick Start

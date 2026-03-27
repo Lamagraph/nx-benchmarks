@@ -5,7 +5,7 @@ Benchmark BFS, SSSP, and Triangle Counting algorithms in NetworkX using graphs i
 
 ## Algorithms
 - **BFS**: `networkx.bfs_layers(G, source)` - use first node as source
-- **SSSP**: `networkx.single_source_dijkstra(G, source)` - use first node as source
+- **SSSP**: `networkx.single_source_bellman_ford(G, source)` - use first node as source
 - **Triangles**: `networkx.triangles(G)` - count triangles in graph
 
 ## Directory Structure

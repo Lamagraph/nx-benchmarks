@@ -12,11 +12,11 @@ def pytest_generate_tests(metafunc: pytest.Metafunc) -> None:
         metafunc.parametrize("name,graph", graphs)
 
 
-def test_dijkstra(benchmark, name: str, graph: nx.Graph, first_node: int) -> None:
-    def run_dijkstra() -> None:
-        _ = nx.single_source_dijkstra(graph, first_node)
+def test_bellman_ford(benchmark, name: str, graph: nx.Graph, first_node: int) -> None:
+    def run_bellman_ford() -> None:
+        _ = nx.single_source_bellman_ford(graph, first_node)
 
-    benchmark(run_dijkstra)
+    benchmark(run_bellman_ford)
     benchmark.extra_info["graph_name"] = name
     benchmark.extra_info["nodes"] = graph.number_of_nodes()
     benchmark.extra_info["edges"] = graph.number_of_edges()

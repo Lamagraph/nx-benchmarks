@@ -38,7 +38,7 @@ def extract_benchmark_data(bench_json: dict) -> list[dict]:
 def get_algorithm_from_testname(test_name: str) -> str:
     if "bfs" in test_name.lower():
         return "bfs"
-    if "dijkstra" in test_name.lower():
+    if "bellman_ford" in test_name.lower():
         return "sssp"
     if "triangles" in test_name.lower():
         return "triangles"
@@ -77,7 +77,7 @@ def plot_scatter(
 
             color = algo_colors.get(algo, "gray")
             marker = markers[graph_markers[graph] % len(markers)]
-            label = f"{algo.upper() if algo != 'dijkstra' else 'SSSP'} - {graph}"
+            label = f"{algo.upper()} - {graph}"
 
             ax.errorbar(
                 x_values,
