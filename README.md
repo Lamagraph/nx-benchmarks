@@ -32,6 +32,26 @@ just plot
 just all
 ```
 
+## Running Without `just`
+
+If `just` is not available, use `uv run`:
+
+```bash
+# Install
+uv sync
+
+# Run benchmarks
+uv run pytest
+
+# Generate plots
+uv run python scripts/plot_results.py
+
+# Full lint
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy .
+```
+
 ## Project Structure
 
 ```
@@ -192,7 +212,84 @@ Hooks run ruff and mypy on every commit.
 - uv (package manager)
 - just (task runner)
 
+## Installation Options
+
+### Full Installation (with linting/type tools)
+
+```bash
+uv sync
+```
+
+### Minimal Installation (benchmarking only)
+
+```bash
+uv sync --no-group dev
+```
+
+This installs only:
+- networkx
+- scipy
+- matplotlib
+- pytest
+- pytest-benchmark
+
 ## Dependencies
 
-- **Runtime**: networkx, scipy, matplotlib
-- **Dev**: pytest, pytest-benchmark, ruff, mypy, types-networkx, scipy-stubs, pre-commit
+| Package | Purpose | Install Type |
+|---------|---------|--------------|
+| networkx | Algorithms | runtime |
+| scipy | Matrix Market loading | runtime |
+| matplotlib | Plotting | runtime |
+| pytest | Test runner | runtime |
+| pytest-benchmark | Benchmarking | runtime |
+| ruff | Linting | dev |
+| mypy | Type checking | dev |
+| types-networkx | Type stubs | dev |
+| scipy-stubs | Type stubs | dev |
+| pre-commit | Git hooks | dev |
+
+## Running on Another Machine
+
+### With uv available
+
+```bash
+git clone <repo>
+uv sync --no-group dev  # minimal - just benchmarks
+just benchmark
+just plot
+```
+
+### With only pip available
+
+```bash
+git clone <repo>
+
+# Create virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# Install runtime + benchmark deps
+pip install networkx scipy matplotlib pytest pytest-benchmark
+
+# Run benchmarks
+pytest
+
+# Generate plots (if matplotlib installed)
+python scripts/plot_results.py
+```
+
+### Portable requirements file
+
+Generate requirements.txt for machines without uv:
+
+```bash
+uv pip freeze > requirements.txt
+```
+
+Then on target machine:
+
+```bash
+pip install -r requirements.txt
+pytest
+python scripts/plot_results.py
+```
