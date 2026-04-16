@@ -8,7 +8,7 @@ Benchmark BFS, SSSP (Bellman-Ford), and Triangle Counting algorithms in NetworkX
 |-----------|-------------------|-------------|
 | BFS | `networkx.bfs_layers(G, source)` | Breadth-first search layers |
 | SSSP | `networkx.single_source_bellman_ford(G, source)` | Single-source shortest path (Bellman-Ford) |
-| Triangles | `networkx.triangles(G)` | Count triangles in graph |
+| TC | `networkx.triangles(G)` | Count triangles in graph |
 
 ## Quick Start
 
@@ -58,13 +58,13 @@ uv run mypy .
 nx_bench/
 ├── bfs/                  # Matrix Market files for BFS benchmarks
 ├── sssp/                 # Matrix Market files for SSSP benchmarks
-├── triangles/           # Matrix Market files for triangles benchmarks
+├── tc/                   # Matrix Market files for triangles benchmarks
 ├── results/              # Benchmark output (JSON, CSV, plots)
 ├── tests/
 │   ├── conftest.py       # Graph loading fixtures
 │   ├── test_bfs.py       # BFS benchmarks
 │   ├── test_sssp.py      # SSSP benchmarks
-│   └── test_triangles.py # Triangles benchmarks
+│   └── test_tc.py # Triangles benchmarks
 ├── scripts/
 │   └── plot_results.py   # Plot generation script
 ├── pyproject.toml        # Project configuration
@@ -100,7 +100,7 @@ nx_bench/
 1. Place `.mtx` Matrix Market files in the appropriate directory:
    - `bfs/` for BFS benchmarks
    - `sssp/` for SSSP benchmarks
-   - `triangles/` for triangles benchmarks
+   - `tc/` for triangles benchmarks
 
 2. Each algorithm directory is auto-scanned on test collection
 

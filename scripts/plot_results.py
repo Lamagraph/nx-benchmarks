@@ -40,8 +40,8 @@ def get_algorithm_from_testname(test_name: str) -> str:
         return "bfs"
     if "bellman_ford" in test_name.lower():
         return "sssp"
-    if "triangles" in test_name.lower():
-        return "triangles"
+    if "tc" in test_name.lower():
+        return "tc"
     return "unknown"
 
 
@@ -55,7 +55,7 @@ def plot_scatter(
     algorithms = sorted({get_algorithm_from_testname(d["test"]) for d in data})
     graphs = sorted({d["graph_name"] for d in data})
 
-    algo_colors = {"bfs": "blue", "sssp": "green", "triangles": "orange", "unknown": "gray"}
+    algo_colors = {"bfs": "blue", "sssp": "green", "tc": "orange", "unknown": "gray"}
     graph_markers = {g: i for i, g in enumerate(graphs)}
     markers = ["o", "s", "^", "D", "v", "<", ">", "p", "h", "*"]
 

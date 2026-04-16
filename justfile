@@ -25,8 +25,8 @@ benchmark-bfs:
 benchmark-sssp:
     uv run pytest tests/test_sssp.py --benchmark-json=results/sssp.json
 
-benchmark-triangles:
-    uv run pytest tests/test_triangles.py --benchmark-json=results/triangles.json
+benchmark-tc:
+    uv run pytest tests/test_tc.py --benchmark-json=results/tc.json
 
 plot:
     uv run python scripts/plot_results.py
