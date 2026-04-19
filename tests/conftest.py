@@ -47,7 +47,7 @@ def get_sssp_graphs() -> list[tuple[str, nx.Graph]]:
 
 def get_tc_graphs() -> list[tuple[str, nx.Graph]]:
     graphs: list[tuple[str, nx.Graph]] = []
-    for mtx_path in discover_mtx_files("triangles"):
+    for mtx_path in discover_mtx_files("tc"):
         try:
             G = load_mtx_graph(mtx_path)
             graphs.append((mtx_path.stem, G))
