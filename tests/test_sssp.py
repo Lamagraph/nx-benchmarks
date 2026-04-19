@@ -20,3 +20,4 @@ def test_bellman_ford(benchmark, name: str, graph: nx.Graph, first_node: int) ->
     benchmark.extra_info["graph_name"] = name
     benchmark.extra_info["nodes"] = graph.number_of_nodes()
     benchmark.extra_info["edges"] = graph.number_of_edges()
+    benchmark.extra_info["algorithm"] = "sssp"
