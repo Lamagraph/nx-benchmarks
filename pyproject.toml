@@ -13,7 +13,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "ruff>=0.1.0",
+    "ruff>=0.15.11",
     "mypy>=1.0.0",
     "types-networkx",
     "scipy-stubs",
@@ -27,7 +27,7 @@ testpaths = ["tests"]
 
 [dependency-groups]
 dev = [
-    "ruff>=0.1.0",
+    "ruff>=0.15.11",
     "mypy>=1.0.0",
     "types-networkx",
     "scipy-stubs",
